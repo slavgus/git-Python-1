@@ -55,7 +55,7 @@ write_dict_in_columns(gross_salary_dict,salary_file_path)
 net_salary_dict = read_dict_in_columns(salary_file_path)
 #Выводим результат
 for net_salary_dict_key in net_salary_dict:
-    print ('{0} - {1}'.format(net_salary_dict_key, net_salary_dict[net_salary_dict_key]))
+    print ('{0} - {1}'.format(net_salary_dict_key.upper(), net_salary_dict[net_salary_dict_key]))
 
 
 

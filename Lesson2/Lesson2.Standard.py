@@ -34,7 +34,6 @@ if source_day <= 20: # если номер дня меньше или равен
 else:  # иначе (номер дня больше 20)
     res_day = day_list[18 + source_day_dig1] + day_list[source_day_dig2 -1] # составляем текстовое значение на основе первой цифры номера дня и второй цифры
 
-
 res_month = month_list[source_month-1] #подбираем текстовое значение из списка для месяца
 
 print ('Исходная дата: {0}'.format(source_date)) #в

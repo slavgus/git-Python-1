@@ -4,13 +4,10 @@ import re
 
 #Функция сигнатурного анализа для выявления атак/ошибок класса Path Travesal (выход за пределы каталога)
 def path_traversal_check (path):
-    path_traversal_pattern = '(\.\.)|(\:)'
+    path_traversal_pattern = '(\.\.)|(\:)|(\/)'
     path_string = str(path)
 
     if re.search(path_traversal_pattern, path_string):
-        # print (path_traversal_pattern)
-        # print(path_string)
-        # print (re.search(path_traversal_pattern, path_string))
         return 1
     else:
         return 0
@@ -59,6 +56,16 @@ def safe_view_folder (folder_path):
     try:
         folder_item_list = os.listdir(folder_path_string)
         return (0, 0, "Директория просмотрена успешно",folder_item_list)
+    except OSError as e:
+        return (1, e.errno, e.strerror)
+
+#Фyнкция безопасного перехода в другой каталог. Возвращает тройку - результат (0-успешно, 1 - неуспешно),
+#Номер ошибки (если была, в противном случае - 0) и текстовое описание результата (успешного или неуспешного)
+def safe_change_folder (folder_path):
+    folder_path_string = str(folder_path)
+    try:
+        os.chdir(folder_path_string)
+        return (0, 0, "Переход в директорию выполнен успешно")
     except OSError as e:
         return (1, e.errno, e.strerror)
 

@@ -83,3 +83,4 @@ for item in MyToys:
     print ('Название:', item.name)
     print ('Цвет:', item.color)
     print ('Тип:', item.type)
+    
